@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://D:\photo-editor-android-master\PhotoEditor.iml" filepath="D:\photo-editor-android-master\PhotoEditor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\photo-editor-android-master\app\app.iml" filepath="D:\photo-editor-android-master\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/photo-editor-android-master.iml" filepath="$PROJECT_DIR$/photo-editor-android-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/photoeditorsdk/photoeditorsdk.iml" filepath="$PROJECT_DIR$/photoeditorsdk/photoeditorsdk.iml" />
+      <module fileurl="file://D:\photo-editor-android-master\photoeditorsdk\photoeditorsdk.iml" filepath="D:\photo-editor-android-master\photoeditorsdk\photoeditorsdk.iml" />
+    </modules>
+  </component>
+</project>
