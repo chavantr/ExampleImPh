@@ -15,9 +15,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-/**
- * Created by Ahmed Adel on 5/4/17.
- */
+
 
 public class ImageFragment extends Fragment implements ImageAdapter.OnImageClickListener {
 

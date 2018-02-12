@@ -14,9 +14,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-/**
- * Created by Ahmed Adel on 5/8/17.
- */
+
 
 public class BrushDrawingView extends View {
 

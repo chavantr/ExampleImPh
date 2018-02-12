@@ -19,9 +19,7 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ahmed Adel on 02/06/2017.
- */
+
 
 public class PhotoEditorSDK implements MultiTouchListener.OnMultiTouchListener {
 

@@ -12,9 +12,6 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- * Created by Ahmed Adel on 5/5/17.
- */
 
 public class EmojiFragment extends Fragment implements EmojiAdapter.OnEmojiClickListener {
 

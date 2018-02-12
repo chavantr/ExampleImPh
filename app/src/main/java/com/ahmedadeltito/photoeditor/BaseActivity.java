@@ -24,9 +24,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by Ahmed Adel on 09/06/2017.
- */
+
 
 public class BaseActivity extends AppCompatActivity {
 
