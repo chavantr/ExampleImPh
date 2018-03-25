@@ -27,4 +27,23 @@
     <string name="undo">Undo</string>
     <string name="erase">Erase</string>
 
+
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_phone">Enter phone</string>
+    <string name="enter_password">Enter password</string>
+    <string name="enter_username">Enter username</string>
+    <string name="enter_phone_number">Enter phone number</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="register">Register</string>
+    <string name="select_date_of_birth">Select date of birth</string>
+
+    <string-array name="gender">
+        <item>Select</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
 </resources>
