@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ExampleImPh.iml" filepath="$PROJECT_DIR$/ExampleImPh.iml" />
-      <module fileurl="file://D:\photo-editor-android-master\PhotoEditor.iml" filepath="D:\photo-editor-android-master\PhotoEditor.iml" />
+      <module fileurl="file://D:/photo-editor-android-master/PhotoEditor.iml" filepath="D:/photo-editor-android-master/PhotoEditor.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://F:\Sunsoft Projects\ImageProcessingVirtual\ExampleImPh\photo-editor-android-master.iml" filepath="F:\Sunsoft Projects\ImageProcessingVirtual\ExampleImPh\photo-editor-android-master.iml" />
+      <module fileurl="file://F:/Sunsoft Projects/ImageProcessingVirtual/ExampleImPh/photo-editor-android-master.iml" filepath="F:/Sunsoft Projects/ImageProcessingVirtual/ExampleImPh/photo-editor-android-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/photoeditorsdk/photoeditorsdk.iml" filepath="$PROJECT_DIR$/photoeditorsdk/photoeditorsdk.iml" />
     </modules>
   </component>

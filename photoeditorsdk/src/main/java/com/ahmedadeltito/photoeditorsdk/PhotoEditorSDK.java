@@ -54,7 +54,7 @@ public class PhotoEditorSDK implements MultiTouchListener.OnMultiTouchListener {
         imageRootView.setOnTouchListener(multiTouchListener);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+        //params.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
         parentView.addView(imageRootView, params);
         addedViews.add(imageRootView);
         if (onPhotoEditorSDKListener != null)
