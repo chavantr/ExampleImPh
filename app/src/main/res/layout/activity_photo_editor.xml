@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.ahmedadeltito.photoeditor.PhotoEditorActivity">
+    tools:context="com.ahmedadeltito.virtualdressingview.PhotoEditorActivity">
 
-    <com.ahmedadeltito.photoeditor.widget.SlidingUpPanelLayout
+    <com.ahmedadeltito.virtualdressingview.widget.SlidingUpPanelLayout
         android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -124,6 +124,7 @@
                     android:layout_alignParentTop="true"
                     android:padding="15dp"
                     android:text="@string/ic_text"
+                    android:visibility="invisible"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
 
@@ -132,6 +133,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toStartOf="@+id/add_text_tv"
+                    android:visibility="invisible"
                     android:padding="15dp"
                     android:text="@string/ic_draw"
                     android:textColor="#FFFFFF"
@@ -189,7 +191,7 @@
                     android:textColor="#FFFFFF"
                     android:textSize="15sp" />
 
-                <TextView
+               <!-- <TextView
                     android:id="@+id/clear_all_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -201,9 +203,9 @@
                     android:gravity="center"
                     android:text="@string/ic_clear_all"
                     android:textColor="#FFFFFF"
-                    android:textSize="25sp" />
+                    android:textSize="25sp" />-->
 
-                <TextView
+               <!-- <TextView
                     android:id="@+id/clear_all_text_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -214,7 +216,7 @@
                     android:layout_toEndOf="@+id/save_tv"
                     android:text="@string/clear_all"
                     android:textColor="#FFFFFF"
-                    android:textSize="15sp" />
+                    android:textSize="15sp" />-->
 
                 <TextView
                     android:id="@+id/undo_tv"
@@ -224,7 +226,6 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="4dp"
-                    android:layout_toEndOf="@+id/clear_all_tv"
                     android:gravity="center"
                     android:text="@string/ic_clear_all"
                     android:textColor="#FFFFFF"
@@ -235,11 +236,10 @@
                     android:id="@+id/undo_text_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/clear_all_tv"
+
                     android:layout_centerVertical="true"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="4dp"
-                    android:layout_toEndOf="@+id/clear_all_tv"
                     android:text="@string/undo"
                     android:textColor="#FFFFFF"
                     android:textSize="15sp"
@@ -285,7 +285,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.ahmedadeltito.photoeditor.widget.RealtimeBlurView
+            <com.ahmedadeltito.virtualdressingview.widget.RealtimeBlurView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:realtimeBlurRadius="10dp"
@@ -309,6 +309,6 @@
 
         </RelativeLayout>
 
-    </com.ahmedadeltito.photoeditor.widget.SlidingUpPanelLayout>
+    </com.ahmedadeltito.virtualdressingview.widget.SlidingUpPanelLayout>
 
 </RelativeLayout>

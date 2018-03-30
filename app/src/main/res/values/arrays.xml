@@ -3,7 +3,7 @@
 
     <integer-array name="photo_editor_photos">
         <item>@drawable/shirt</item>
-        <item>@drawable/c</item>
+        <!--<item>@drawable/c</item>
         <item>@drawable/d</item>
         <item>@drawable/e</item>
         <item>@drawable/i</item>
@@ -28,13 +28,13 @@
         <item>@drawable/bb</item>
         <item>@drawable/cc</item>
         <item>@drawable/dd</item>
-        <item>@drawable/ee</item>
+        <item>@drawable/ee</item>-->
     </integer-array>
 
     <string-array name="photo_editor_emoji">
 
         <!-- People -->
-        <item>u+1f604</item>
+       <!-- <item>u+1f604</item>
         <item>u+1f603</item>
         <item>u+1f600</item>
         <item>u+1f60a</item>
@@ -69,7 +69,7 @@
         <item>u+1f631</item>
         <item>u+1f620</item>
         <item>u+1f621</item>
-        <item>u+1f624</item>
+        <item>u+1f624</item>-->
 
         <!--People -->
         <!--<item>u+1f616</item>-->
