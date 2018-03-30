@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ExampleImPh.iml" filepath="$PROJECT_DIR$/ExampleImPh.iml" />
+      <module fileurl="file://F:\SunsoftProjects\LatestVirtualDressingView\ExampleImPh\ExampleImPh.iml" filepath="F:\SunsoftProjects\LatestVirtualDressingView\ExampleImPh\ExampleImPh.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://F:\SunsoftProjects\LatestVirtualDressingView\ExampleImPh\app\app.iml" filepath="F:\SunsoftProjects\LatestVirtualDressingView\ExampleImPh\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/virtualdressingviewlibrary/virtualdressingviewlibrary.iml" filepath="$PROJECT_DIR$/virtualdressingviewlibrary/virtualdressingviewlibrary.iml" />
+      <module fileurl="file://F:\SunsoftProjects\LatestVirtualDressingView\ExampleImPh\virtualdressingviewlibrary\virtualdressingviewlibrary.iml" filepath="F:\SunsoftProjects\LatestVirtualDressingView\ExampleImPh\virtualdressingviewlibrary\virtualdressingviewlibrary.iml" />
     </modules>
   </component>
 </project>

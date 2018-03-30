@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends MediaActivity {
+public class MainActivity extends MediaActivity implements OnResultListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,5 +25,10 @@ public class MainActivity extends MediaActivity {
         Intent intent = new Intent(MainActivity.this, PhotoEditorActivity.class);
         intent.putExtra("selectedImagePath", selectedImagePath);
         startActivity(intent);
+    }
+
+    @Override
+    public void onSuccess(String result) {
+
     }
 }
