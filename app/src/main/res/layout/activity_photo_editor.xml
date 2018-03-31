@@ -245,15 +245,17 @@
                     android:textSize="15sp"
                     android:visibility="gone" />
 
-                <TextView
+                <Button
                     android:id="@+id/go_to_next_screen_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:text="@string/ic_continue"
-                    android:textColor="#FFFFFF"
-                    android:textSize="40sp" />
+                    android:text="CheckOut"
+
+                     />
+
+
 
             </RelativeLayout>
 

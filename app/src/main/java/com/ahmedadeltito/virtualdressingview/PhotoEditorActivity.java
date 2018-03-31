@@ -20,6 +20,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,11 +28,11 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ahmedadeltito.virtualdressingview.widget.SlidingUpPanelLayout;
 import com.ahmedadeltito.photoeditorsdk.BrushDrawingView;
 import com.ahmedadeltito.photoeditorsdk.OnPhotoEditorSDKListener;
 import com.ahmedadeltito.photoeditorsdk.PhotoEditorSDK;
 import com.ahmedadeltito.photoeditorsdk.ViewType;
+import com.ahmedadeltito.virtualdressingview.widget.SlidingUpPanelLayout;
 import com.viewpagerindicator.PageIndicator;
 
 import java.text.SimpleDateFormat;
@@ -86,7 +87,7 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
         eraseDrawingTextView = (TextView) findViewById(R.id.erase_drawing_tv);
         //TextView clearAllTextView = (TextView) findViewById(R.id.clear_all_tv);
         //TextView clearAllTextTextView = (TextView) findViewById(R.id.clear_all_text_tv);
-        TextView goToNextTextView = (TextView) findViewById(R.id.go_to_next_screen_tv);
+        Button goToNextTextView = (Button) findViewById(R.id.go_to_next_screen_tv);
         ImageView photoEditImageView = (ImageView) findViewById(R.id.photo_edit_iv);
         mLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         topShadow = findViewById(R.id.top_shadow);
@@ -341,7 +342,7 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
         } else if (v.getId() == R.id.erase_drawing_tv) {
             eraseDrawing();
         } else if (v.getId() == R.id.go_to_next_screen_tv) {
-            returnBackWithSavedImage();
+            //returnBackWithSavedImage();
         }
     }
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ahmedadeltito.virtualdressingview.com.ahmedadeltito.virtualdressingview.MainActivity">
+    tools:context="com.ahmedadeltito.virtualdressingview.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,6 +22,15 @@
             android:layout_height="wrap_content"
             android:onClick="openUserCamera"
             android:text="@string/choose_from_camera" />
+
+
+        <TextView
+            android:layout_marginTop="25dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:text="Choose/Click appropriate Photo for accurate result."
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
