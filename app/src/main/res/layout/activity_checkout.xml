@@ -42,7 +42,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center_vertical"
         android:padding="7dp"
-        android:text="Enter Value"
+        android:text="Your amount is : 500"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

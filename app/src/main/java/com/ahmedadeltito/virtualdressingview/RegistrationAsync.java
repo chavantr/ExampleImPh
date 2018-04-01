@@ -11,8 +11,9 @@ public class RegistrationAsync extends AsyncTask<JSONObject, Void, String> {
     private HttpConnectionUtil httpConnectionUtil = new HttpConnectionUtil();
 
 
-    public void setOnResultListener(OnResultListener onResultListener) {
+    public void setOnResultListener(OnResultListener onResultListener,JSONObject request) {
         this.onResultListener = onResultListener;
+        super.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,request);
     }
 
     @Override

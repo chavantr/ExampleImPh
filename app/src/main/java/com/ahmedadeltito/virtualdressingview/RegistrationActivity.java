@@ -14,6 +14,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
 
 import java.util.Calendar;
 import java.util.regex.Pattern;
@@ -56,21 +59,23 @@ public class RegistrationActivity extends AppCompatActivity implements OnResultL
             @Override
             public void onClick(View v) {
                 if (validate()) {
-
-
-
-
-
-
-
-
-                } else {
-
+                    try {
+                        JSONObject request = new JSONObject();
+                        request.put("name", txtName.getText().toString());
+                        request.put("address", txtAddress.getText().toString());
+                        request.put("email", txtEmail.getText().toString());
+                        request.put("phone", txtMobileNumber.getText().toString());
+                        request.put("gender", spnGender.getSelectedItem().toString());
+                        request.put("dob", lblDateOfBirth.getText().toString());
+                        request.put("password", txtPassword.getText().toString());
+                        RegistrationAsync registrationAsync = new RegistrationAsync();
+                        registrationAsync.setOnResultListener(RegistrationActivity.this, request);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
-
-
     }
 
     private boolean isValidEmaill(String email) {
@@ -82,14 +87,30 @@ public class RegistrationActivity extends AppCompatActivity implements OnResultL
                 + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$").matcher(email).matches();
     }
 
-    public boolean isAlphaNumeric(String s){
-        String pattern= "^[a-zA-Z0-9]*$";
+    public boolean isAlphaNumeric(String s) {
+        String pattern = "^[a-zA-Z0-9]*$";
         return s.matches(pattern);
     }
 
     @Override
     public void onSuccess(String result) {
 
+        if (null != result && result.contains("User already exist")) {
+
+            Snackbar.make(btnRegister, result, Snackbar.LENGTH_LONG).show();
+
+            return;
+        }
+
+
+        if (null != result && result.length() > 0) {
+            Snackbar.make(btnRegister, "Registration completed.", Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            }).show();
+        }
     }
 
     @SuppressLint("ValidFragment")
@@ -98,13 +119,10 @@ public class RegistrationActivity extends AppCompatActivity implements OnResultL
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the current date as the default date in the picker
             final Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR);
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH);
-
-            // Create a new instance of DatePickerDialog and return it
             return new DatePickerDialog(getActivity(), this, year, month, day);
         }
 
@@ -138,8 +156,8 @@ public class RegistrationActivity extends AppCompatActivity implements OnResultL
         if (TextUtils.isEmpty(txtPassword.getText())) {
             txtPassword.setError("Enter password");
             return false;
-        }else {
-            if(!isAlphaNumeric(txtPassword.getText().toString())){
+        } else {
+            if (!isAlphaNumeric(txtPassword.getText().toString())) {
                 txtPassword.setError("Enter strong password");
                 return false;
             }
@@ -150,7 +168,7 @@ public class RegistrationActivity extends AppCompatActivity implements OnResultL
             return false;
         }
 
-        if (spnGender.getSelectedItem().toString().equalsIgnoreCase("Select")) {
+        if (spnGender.getSelectedItem().toString().equalsIgnoreCase("Select gender")) {
             show("Select gender");
             return false;
         }

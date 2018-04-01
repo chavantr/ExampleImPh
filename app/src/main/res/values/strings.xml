@@ -41,7 +41,7 @@
     <string name="select_date_of_birth">Select date of birth</string>
 
     <string-array name="gender">
-        <item>Select</item>
+        <item>Select gender</item>
         <item>Male</item>
         <item>Female</item>
     </string-array>

@@ -2,7 +2,12 @@
 <resources>
 
     <integer-array name="photo_editor_photos">
-        <item>@drawable/shirt</item>
+        <!-- <item>@drawable/shirtnew</item> -->
+        <item>@drawable/top1</item>
+        <item>@drawable/top2</item>
+        <item>@drawable/top3</item>
+        <item>@drawable/top4</item>
+        <item>@drawable/top5</item>
         <!--<item>@drawable/c</item>
         <item>@drawable/d</item>
         <item>@drawable/e</item>

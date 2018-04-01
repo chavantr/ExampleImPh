@@ -46,16 +46,25 @@ public class PhotoEditorSDK implements MultiTouchListener.OnMultiTouchListener {
         View imageRootView = inflater.inflate(R.layout.photo_editor_sdk_image_item_list, null);
         ImageView imageView = (ImageView) imageRootView.findViewById(R.id.photo_editor_sdk_image_iv);
         imageView.setImageBitmap(desiredImage);
-        imageView.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT));
+
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.FILL_PARENT);
+
+        params.setMargins(10,20,10,20);
+
+        imageView.setLayoutParams(params);
+
+
+
         MultiTouchListener multiTouchListener = new MultiTouchListener(deleteView,
                 parentView, this.imageView, onPhotoEditorSDKListener);
         multiTouchListener.setOnMultiTouchListener(this);
         imageRootView.setOnTouchListener(multiTouchListener);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+        RelativeLayout.LayoutParams params0 = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         //params.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-        parentView.addView(imageRootView, params);
+        parentView.addView(imageRootView, params0);
         addedViews.add(imageRootView);
         if (onPhotoEditorSDKListener != null)
             onPhotoEditorSDKListener.onAddViewListener(ViewType.IMAGE, addedViews.size());

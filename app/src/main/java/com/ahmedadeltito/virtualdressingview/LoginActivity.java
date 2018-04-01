@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity implements OnResultListener
     private Button btnSignUp;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +68,12 @@ public class LoginActivity extends AppCompatActivity implements OnResultListener
     @Override
     public void onSuccess(String result) {
 
-        if (null != result && result.equalsIgnoreCase("[]")) {
+        if (null != result) {
+
+            if(result.length()==2){
+                Toast.makeText(this,"Enter correct username or password",Toast.LENGTH_LONG).show();
+                return;
+            }
             Intent intent = new Intent(LoginActivity.this,MainActivity.class);
             startActivity(intent);
         }else {

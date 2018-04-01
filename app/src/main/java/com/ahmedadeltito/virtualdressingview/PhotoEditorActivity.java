@@ -55,6 +55,7 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
     private ArrayList<Integer> colorPickerColors;
     private int colorCodeTextView = -1;
     private PhotoEditorSDK photoEditorSDK;
+public static android.graphics.Bitmap selectedImage=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -302,7 +303,7 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void returnBackWithSavedImage() {
-        updateView(View.GONE);
+        //updateView(View.GONE);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
@@ -318,7 +319,7 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("imagePath", photoEditorSDK.saveImage("PhotoEditorSDK", imageName));
                 setResult(Activity.RESULT_OK, returnIntent);
-                finish();
+                //finish();
             }
         }.start();
     }
@@ -342,9 +343,21 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
         } else if (v.getId() == R.id.erase_drawing_tv) {
             eraseDrawing();
         } else if (v.getId() == R.id.go_to_next_screen_tv) {
+
+
+            startCheckout();
+
             //returnBackWithSavedImage();
         }
     }
+
+
+    private void startCheckout(){
+        Intent intent = new Intent(PhotoEditorActivity.this,CheckoutActivity.class);
+        startActivity(intent);
+}
+
+
 
     @Override
     public void onEditTextChangeListener(String text, int colorCode) {
@@ -372,6 +385,9 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
                 break;
         }
     }
+
+
+
 
     @Override
     public void onRemoveViewListener(int numberOfAddedViews) {

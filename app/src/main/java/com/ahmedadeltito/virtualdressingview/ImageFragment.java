@@ -76,6 +76,7 @@ public class ImageFragment extends Fragment implements ImageAdapter.OnImageClick
 
     @Override
     public void onImageClickListener(Bitmap image) {
+PhotoEditorActivity.selectedImage = image;
         photoEditorActivity.addImage(image);
     }
 }
