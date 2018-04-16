@@ -127,7 +127,7 @@ public class RegistrationActivity extends AppCompatActivity implements OnResultL
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            lblDateOfBirth.setText("" + day + "/" + month + "/" + year);
+            lblDateOfBirth.setText("" + day + "/" + (month + 1) + "/" + year);
         }
     }
 
