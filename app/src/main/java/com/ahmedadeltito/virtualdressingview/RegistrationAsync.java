@@ -18,6 +18,11 @@ public class RegistrationAsync extends AsyncTask<JSONObject, Void, String> {
 
     @Override
     protected String doInBackground(JSONObject... jsonObjects) {
+
+
+        httpConnectionUtil.requestPost(VirtualDressingRoomConstant.URL + VirtualDressingRoomConstant.SEND_EMAIL, jsonObjects[0]);
+
+
         return httpConnectionUtil.requestPost(VirtualDressingRoomConstant.URL + VirtualDressingRoomConstant.REGISTRATION, jsonObjects[0]);
     }
 
