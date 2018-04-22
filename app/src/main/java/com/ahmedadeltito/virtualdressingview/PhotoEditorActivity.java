@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -35,6 +36,11 @@ import com.ahmedadeltito.photoeditorsdk.ViewType;
 import com.ahmedadeltito.virtualdressingview.widget.SlidingUpPanelLayout;
 import com.viewpagerindicator.PageIndicator;
 
+import org.opencv.android.Utils;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -55,7 +61,10 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
     private ArrayList<Integer> colorPickerColors;
     private int colorCodeTextView = -1;
     private PhotoEditorSDK photoEditorSDK;
-public static android.graphics.Bitmap selectedImage=null;
+    public static android.graphics.Bitmap selectedImage = null;
+    public static Mat humanMat;
+    public static ImageView photoEditImageView;
+    public static Bitmap userImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +98,7 @@ public static android.graphics.Bitmap selectedImage=null;
         //TextView clearAllTextView = (TextView) findViewById(R.id.clear_all_tv);
         //TextView clearAllTextTextView = (TextView) findViewById(R.id.clear_all_text_tv);
         Button goToNextTextView = (Button) findViewById(R.id.go_to_next_screen_tv);
-        ImageView photoEditImageView = (ImageView) findViewById(R.id.photo_edit_iv);
+        photoEditImageView = (ImageView) findViewById(R.id.photo_edit_iv);
         mLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         topShadow = findViewById(R.id.top_shadow);
         topShadowRelativeLayout = (RelativeLayout) findViewById(R.id.top_parent_rl);
@@ -99,7 +108,24 @@ public static android.graphics.Bitmap selectedImage=null;
         ViewPager pager = (ViewPager) findViewById(R.id.image_emoji_view_pager);
         PageIndicator indicator = (PageIndicator) findViewById(R.id.image_emoji_indicator);
 
+
+        Mat rgba = new Mat();
+        Utils.bitmapToMat(bitmap, rgba);
+
+        Mat edges = new Mat(rgba.size(), CvType.CV_8UC1);
+        Imgproc.cvtColor(rgba, edges, Imgproc.COLOR_RGB2GRAY, 4);
+        Imgproc.Canny(edges, edges, 80, 120);
+
+        // Don't do that at home or work it's for visualization purpose.
+        //BitmapHelper.showBitmap(this, bitmap, imageView);
+        Bitmap resultBitmap = Bitmap.createBitmap(edges.cols(), edges.rows(), Bitmap.Config.ARGB_8888);
+        Utils.matToBitmap(edges, resultBitmap);
+
+        PhotoEditorSDK.selectedMat = edges;
+
         photoEditImageView.setImageBitmap(bitmap);
+
+        PhotoEditorSDK.userImage = bitmap;
 
         closeTextView.setTypeface(newFont);
         addTextView.setTypeface(newFont);
@@ -159,7 +185,7 @@ public static android.graphics.Bitmap selectedImage=null;
         undoTextTextView.setOnClickListener(this);
         doneDrawingTextView.setOnClickListener(this);
         eraseDrawingTextView.setOnClickListener(this);
-       // clearAllTextView.setOnClickListener(this);
+        // clearAllTextView.setOnClickListener(this);
         //clearAllTextTextView.setOnClickListener(this);
         goToNextTextView.setOnClickListener(this);
 
@@ -352,11 +378,10 @@ public static android.graphics.Bitmap selectedImage=null;
     }
 
 
-    private void startCheckout(){
-        Intent intent = new Intent(PhotoEditorActivity.this,CheckoutActivity.class);
+    private void startCheckout() {
+        Intent intent = new Intent(PhotoEditorActivity.this, CheckoutActivity.class);
         startActivity(intent);
-}
-
+    }
 
 
     @Override
@@ -385,8 +410,6 @@ public static android.graphics.Bitmap selectedImage=null;
                 break;
         }
     }
-
-
 
 
     @Override
@@ -455,4 +478,6 @@ public static android.graphics.Bitmap selectedImage=null;
             return 2;
         }
     }
+
+
 }

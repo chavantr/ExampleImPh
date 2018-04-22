@@ -32,6 +32,9 @@ public class LoginActivity extends AppCompatActivity implements OnResultListener
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
 
+        txtUserName.setText("ankita@gmail.com");
+        txtPassword.setText("uSer_123");
+
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

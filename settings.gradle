@@ -1,1 +1,2 @@
 include ':app', ':virtualdressingviewlibrary'
+include ':openCVLibrary2411'

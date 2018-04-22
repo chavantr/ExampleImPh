@@ -2,6 +2,8 @@ package com.ahmedadeltito.photoeditorsdk;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Typeface;
 import android.os.Environment;
 import android.support.annotation.ColorInt;
@@ -14,11 +16,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.opencv.android.Utils;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 public class PhotoEditorSDK implements MultiTouchListener.OnMultiTouchListener {
@@ -31,6 +37,10 @@ public class PhotoEditorSDK implements MultiTouchListener.OnMultiTouchListener {
     private List<View> addedViews;
     private OnPhotoEditorSDKListener onPhotoEditorSDKListener;
     private View addTextRootView;
+
+    public static Mat selectedMat;
+    public static Bitmap userImage;
+
 
     private PhotoEditorSDK(PhotoEditorSDKBuilder photoEditorSDKBuilder) {
         this.context = photoEditorSDKBuilder.context;
@@ -45,17 +55,42 @@ public class PhotoEditorSDK implements MultiTouchListener.OnMultiTouchListener {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View imageRootView = inflater.inflate(R.layout.photo_editor_sdk_image_item_list, null);
         ImageView imageView = (ImageView) imageRootView.findViewById(R.id.photo_editor_sdk_image_iv);
-        imageView.setImageBitmap(desiredImage);
+        //imageView.setImageBitmap(desiredImage);
 
+
+        /*Mat rgba = new Mat();
+        Utils.bitmapToMat(desiredImage, rgba);
+
+        Mat edges = new Mat(rgba.size(), CvType.CV_8UC1);
+        Imgproc.cvtColor(rgba, edges, Imgproc.COLOR_RGB2GRAY, 4);
+        Imgproc.Canny(edges, edges, 80, 100);
+
+        // Don't do that at home or work it's for visualization purpose.
+        //BitmapHelper.showBitmap(this, bitmap, imageView);
+        Bitmap resultBitmap = Bitmap.createBitmap(edges.cols(), edges.rows(), Bitmap.Config.ARGB_8888);
+        Utils.matToBitmap(edges, resultBitmap);
+
+        imageView.setImageBitmap(resultBitmap);*/
+
+        //Bitmap scalebitmap = Bitmap.createScaledBitmap(desiredImage, desiredImage.getWidth() + 150,
+        //               desiredImage.getHeight()+150, true);
+
+
+        Bitmap resultBitmap = Bitmap.createScaledBitmap(desiredImage, selectedMat.cols(), selectedMat.rows(), false);
+        //Utils.matToBitmap(selectedMat, resultBitmap);
+
+        imageView.setImageBitmap(resultBitmap);
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT,
                 RelativeLayout.LayoutParams.FILL_PARENT);
 
-        params.setMargins(10,20,10,20);
+        params.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+
+
+        params.setMargins(10, 500, 10, 10);
 
         imageView.setLayoutParams(params);
-
-
 
         MultiTouchListener multiTouchListener = new MultiTouchListener(deleteView,
                 parentView, this.imageView, onPhotoEditorSDKListener);
@@ -294,5 +329,48 @@ public class PhotoEditorSDK implements MultiTouchListener.OnMultiTouchListener {
         public PhotoEditorSDK buildPhotoEditorSDK() {
             return new PhotoEditorSDK(this);
         }
+    }
+
+
+    public Bitmap combineImages(Bitmap c, Bitmap s) { // can add a 3rd parameter 'String loc' if you want to save the new image - left some code to do that at the bottom
+        Bitmap cs = null;
+
+        int width, height = 0;
+
+        if (c.getWidth() > s.getWidth()) {
+            width = c.getWidth() + s.getWidth();
+            height = c.getHeight();
+        } else {
+            width = s.getWidth() + s.getWidth();
+            height = c.getHeight();
+        }
+
+        cs = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+
+        Canvas comboImage = new Canvas(cs);
+
+        comboImage.drawBitmap(c, 0f, 0f, null);
+        comboImage.drawBitmap(s, 0, s.getWidth(), null);
+
+        // this is an extra bit I added, just incase you want to save the new image somewhere and then return the location
+    /*String tmpImg = String.valueOf(System.currentTimeMillis()) + ".png";
+
+    OutputStream os = null;
+    try {
+      os = new FileOutputStream(loc + tmpImg);
+      cs.compress(CompressFormat.PNG, 100, os);
+    } catch(IOException e) {
+      Log.e("combineImages", "problem combining images", e);
+    }*/
+
+        return cs;
+    }
+
+    public  Bitmap overlay(Bitmap bmp1, Bitmap bmp2) {
+        Bitmap bmOverlay = Bitmap.createBitmap(bmp1.getWidth(), bmp1.getHeight(), bmp1.getConfig());
+        Canvas canvas = new Canvas(bmOverlay);
+        canvas.drawBitmap(bmp1, new Matrix(), null);
+        canvas.drawBitmap(bmp2, 0, 0, null);
+        return bmOverlay;
     }
 }

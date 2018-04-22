@@ -3,6 +3,7 @@ package com.ahmedadeltito.virtualdressingview.widget;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
@@ -26,6 +27,11 @@ import android.widget.ScrollView;
 
 import com.ahmedadeltito.virtualdressingview.R;
 import com.nineoldandroids.view.animation.AnimatorProxy;
+
+import org.opencv.android.Utils;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
 
 public class SlidingUpPanelLayout extends ViewGroup {
 
@@ -1518,4 +1524,19 @@ public class SlidingUpPanelLayout extends ViewGroup {
                     }
                 };
     }
+
+    /*private void detectEdges(Bitmap bitmap) {
+        Mat rgba = new Mat();
+        Utils.bitmapToMat(bitmap, rgba);
+
+        Mat edges = new Mat(rgba.size(), CvType.CV_8UC1);
+        Imgproc.cvtColor(rgba, edges, Imgproc.COLOR_RGB2GRAY, 4);
+        Imgproc.Canny(edges, edges, 80, 100);
+
+        // Don't do that at home or work it's for visualization purpose.
+        //BitmapHelper.showBitmap(this, bitmap, imageView);
+        Bitmap resultBitmap = Bitmap.createBitmap(edges.cols(), edges.rows(), Bitmap.Config.ARGB_8888);
+        Utils.matToBitmap(edges, resultBitmap);
+       // BitmapHelper.showBitmap(this, resultBitmap, detectEdgesImageView);
+    }*/
 }
