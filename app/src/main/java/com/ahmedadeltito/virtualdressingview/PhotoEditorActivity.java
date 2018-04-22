@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -65,6 +64,9 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
     public static Mat humanMat;
     public static ImageView photoEditImageView;
     public static Bitmap userImage;
+    private boolean isEdge=true;
+    private Bitmap resultBitmap;
+    private Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,10 +77,25 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inSampleSize = 1;
-        Bitmap bitmap = BitmapFactory.decodeFile(selectedImagePath, options);
+        bitmap = BitmapFactory.decodeFile(selectedImagePath, options);
 
         Typeface newFont = Typeface.createFromAsset(getAssets(), "Eventtus-Icons.ttf");
         emojiFont = Typeface.createFromAsset(getAssets(), "emojione-android.ttf");
+
+        findViewById(R.id.btnEdges).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (isEdge) {
+                    photoEditImageView.setImageBitmap(resultBitmap);
+                    isEdge = false;
+                } else {
+                    photoEditImageView.setImageBitmap(bitmap);
+                    isEdge = true;
+                }
+
+            }
+        });
 
         BrushDrawingView brushDrawingView = (BrushDrawingView) findViewById(R.id.drawing_view);
         drawingViewColorPickerRecyclerView = (RecyclerView) findViewById(R.id.drawing_view_color_picker_recycler_view);
@@ -118,7 +135,7 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
 
         // Don't do that at home or work it's for visualization purpose.
         //BitmapHelper.showBitmap(this, bitmap, imageView);
-        Bitmap resultBitmap = Bitmap.createBitmap(edges.cols(), edges.rows(), Bitmap.Config.ARGB_8888);
+        resultBitmap = Bitmap.createBitmap(edges.cols(), edges.rows(), Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(edges, resultBitmap);
 
         PhotoEditorSDK.selectedMat = edges;
