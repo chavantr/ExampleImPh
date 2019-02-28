@@ -15,7 +15,7 @@ public class ThankYouScreen extends AppCompatActivity {
         findViewById(R.id.btnContinue).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ThankYouScreen.this,MainActivity.class);
+                Intent intent = new Intent(ThankYouScreen.this, MainActivity_0.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Virtual Dressing View</string>
+    <string name="app_name">Hair Recommended System</string>
     <string name="title_activity_photo_editor">PhotoEditorActivity</string>
     <string name="done">Done</string>
     <string name="save">Save</string>
@@ -45,5 +45,14 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+
+    <string name="tap_here_to_crop_image">Tap here to crop image</string>
+    <string name="crop">Crop</string>
+    <string name="registration">Registration</string>
+    <string name="select_image">Select image</string>
+
+    <string name="enter_number">Enter number</string>
+
+    <string name="cancel">Cancel</string>
 
 </resources>

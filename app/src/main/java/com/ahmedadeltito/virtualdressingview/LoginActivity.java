@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity implements OnResultListener
                 Toast.makeText(this,"Enter correct username or password",Toast.LENGTH_LONG).show();
                 return;
             }
-            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MainActivity_0.class);
             startActivity(intent);
         }else {
             Toast.makeText(this,"Not able to login",Toast.LENGTH_LONG).show();

@@ -32,6 +32,7 @@ import com.ahmedadeltito.photoeditorsdk.BrushDrawingView;
 import com.ahmedadeltito.photoeditorsdk.OnPhotoEditorSDKListener;
 import com.ahmedadeltito.photoeditorsdk.PhotoEditorSDK;
 import com.ahmedadeltito.photoeditorsdk.ViewType;
+import com.ahmedadeltito.virtualdressingview.models.UserInfoHolder;
 import com.ahmedadeltito.virtualdressingview.widget.SlidingUpPanelLayout;
 import com.viewpagerindicator.PageIndicator;
 
@@ -64,7 +65,7 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
     public static Mat humanMat;
     public static ImageView photoEditImageView;
     public static Bitmap userImage;
-    private boolean isEdge=true;
+    private boolean isEdge = true;
     private Bitmap resultBitmap;
     private Bitmap bitmap;
 
@@ -73,11 +74,12 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_editor);
 
-        String selectedImagePath = getIntent().getExtras().getString("selectedImagePath");
+//        String selectedImagePath = getIntent().getExtras().getString("selectedImagePath");
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inSampleSize = 1;
-        bitmap = BitmapFactory.decodeFile(selectedImagePath, options);
+        //bitmap = BitmapFactory.decodeFile(selectedImagePath, options);
+        bitmap = UserInfoHolder.getInstance().getCroppedImage();
 
         Typeface newFont = Typeface.createFromAsset(getAssets(), "Eventtus-Icons.ttf");
         emojiFont = Typeface.createFromAsset(getAssets(), "emojione-android.ttf");

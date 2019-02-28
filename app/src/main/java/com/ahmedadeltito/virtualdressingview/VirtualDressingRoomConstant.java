@@ -3,7 +3,7 @@ package com.ahmedadeltito.virtualdressingview;
 public class VirtualDressingRoomConstant {
 
 
-    public static final String URL = "http://192.168.0.102:3000/";
+    public static final String URL = "http://192.168.0.101:3000/";
 
     public static final String LOGIN = "login";
 

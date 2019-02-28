@@ -10,16 +10,15 @@ import org.opencv.android.AsyncServiceHelper;
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.InstallCallbackInterface;
 import org.opencv.android.LoaderCallbackInterface;
-import org.opencv.android.OpenCVLoader;
 
 import static org.opencv.android.AsyncServiceHelper.InstallService;
 
-public class MainActivity extends MediaActivity implements OnResultListener {
+public class MainActivity_0 extends MediaActivity implements OnResultListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_n);
     }
 
     public void openUserGallery(View view) {
@@ -32,7 +31,7 @@ public class MainActivity extends MediaActivity implements OnResultListener {
 
     @Override
     protected void onPhotoTaken() {
-        Intent intent = new Intent(MainActivity.this, PhotoEditorActivity.class);
+        Intent intent = new Intent(MainActivity_0.this, PhotoEditorActivity.class);
         intent.putExtra("selectedImagePath", selectedImagePath);
         startActivity(intent);
     }
