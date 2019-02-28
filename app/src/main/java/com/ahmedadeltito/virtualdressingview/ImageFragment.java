@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-
+import java.util.Random;
 
 
 public class ImageFragment extends Fragment implements ImageAdapter.OnImageClickListener {
@@ -22,6 +22,8 @@ public class ImageFragment extends Fragment implements ImageAdapter.OnImageClick
     private ArrayList<Bitmap> stickerBitmaps;
     private PhotoEditorActivity photoEditorActivity;
     RecyclerView imageRecyclerView;
+
+    private final int MAX_THRESH_CLUSTER = 3;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,10 +33,13 @@ public class ImageFragment extends Fragment implements ImageAdapter.OnImageClick
         TypedArray images = getResources().obtainTypedArray(R.array.photo_editor_photos);
 
         stickerBitmaps = new ArrayList<>();
-        for (int i = 0; i < images.length(); i++) {
-            stickerBitmaps.add(decodeSampledBitmapFromResource(photoEditorActivity.getResources(), images.getResourceId(i, -1), 120, 120));
+        for (int i = 0; i < MAX_THRESH_CLUSTER; i++) {
+            stickerBitmaps.add(decodeSampledBitmapFromResource(photoEditorActivity.getResources(), images.getResourceId(new Random().nextInt(images.length()), -1), 120, 120));
         }
+
+
     }
+
 
     @Nullable
     @Override
@@ -76,7 +81,7 @@ public class ImageFragment extends Fragment implements ImageAdapter.OnImageClick
 
     @Override
     public void onImageClickListener(Bitmap image) {
-PhotoEditorActivity.selectedImage = image;
+        PhotoEditorActivity.selectedImage = image;
         photoEditorActivity.addImage(image);
     }
 }

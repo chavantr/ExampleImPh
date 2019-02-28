@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
@@ -68,6 +69,8 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
     private boolean isEdge = true;
     private Bitmap resultBitmap;
     private Bitmap bitmap;
+    private Button goToNextTextView;
+    private String strImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +119,7 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
         eraseDrawingTextView = (TextView) findViewById(R.id.erase_drawing_tv);
         //TextView clearAllTextView = (TextView) findViewById(R.id.clear_all_tv);
         //TextView clearAllTextTextView = (TextView) findViewById(R.id.clear_all_text_tv);
-        Button goToNextTextView = (Button) findViewById(R.id.go_to_next_screen_tv);
+        goToNextTextView = (Button) findViewById(R.id.go_to_next_screen_tv);
         photoEditImageView = (ImageView) findViewById(R.id.photo_edit_iv);
         mLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         topShadow = findViewById(R.id.top_shadow);
@@ -349,6 +352,7 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
 
     private void returnBackWithSavedImage() {
         //updateView(View.GONE);
+        goToNextTextView.setVisibility(View.VISIBLE);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
@@ -361,8 +365,9 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
             public void onFinish() {
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                 String imageName = "IMG_" + timeStamp + ".jpg";
+                strImage = imageName = photoEditorSDK.saveImage("PhotoEditorSDK", imageName);
                 Intent returnIntent = new Intent();
-                returnIntent.putExtra("imagePath", photoEditorSDK.saveImage("PhotoEditorSDK", imageName));
+                returnIntent.putExtra("imagePath", strImage);
                 setResult(Activity.RESULT_OK, returnIntent);
                 //finish();
             }
@@ -398,8 +403,16 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
 
 
     private void startCheckout() {
-        Intent intent = new Intent(PhotoEditorActivity.this, CheckoutActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(PhotoEditorActivity.this, CheckoutActivity.class);
+        //startActivity(intent);
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        Uri pictureUri = Uri.parse(strImage);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, pictureUri);
+        shareIntent.setType("image/*");
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        startActivity(Intent.createChooser(shareIntent, "Share images..."));
+
     }
 
 
@@ -411,8 +424,8 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onAddViewListener(ViewType viewType, int numberOfAddedViews) {
         if (numberOfAddedViews > 0) {
-            undoTextView.setVisibility(View.VISIBLE);
-            undoTextTextView.setVisibility(View.VISIBLE);
+            //undoTextView.setVisibility(View.VISIBLE);
+            //undoTextTextView.setVisibility(View.VISIBLE);
         }
         switch (viewType) {
             case BRUSH_DRAWING:

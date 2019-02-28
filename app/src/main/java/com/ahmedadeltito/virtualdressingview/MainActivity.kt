@@ -9,7 +9,8 @@ import org.opencv.android.BaseLoaderCallback
 import org.opencv.android.InstallCallbackInterface
 import org.opencv.android.LoaderCallbackInterface
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnLoginListener {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,6 +69,13 @@ class MainActivity : AppCompatActivity() {
                 super.onPackageInstall(operation, callback)
             }
         })*/
+
+    }
+
+    override fun onLoginSuccess(result: String?) {
+
+
+
 
     }
 }

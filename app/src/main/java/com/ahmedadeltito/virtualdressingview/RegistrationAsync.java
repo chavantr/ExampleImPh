@@ -20,10 +20,10 @@ public class RegistrationAsync extends AsyncTask<JSONObject, Void, String> {
     protected String doInBackground(JSONObject... jsonObjects) {
 
 
-        httpConnectionUtil.requestPost(VirtualDressingRoomConstant.URL + VirtualDressingRoomConstant.SEND_EMAIL, jsonObjects[0]);
+        httpConnectionUtil.requestPost(HairRecommendationConstants.URL + HairRecommendationConstants.SEND_EMAIL, jsonObjects[0]);
 
 
-        return httpConnectionUtil.requestPost(VirtualDressingRoomConstant.URL + VirtualDressingRoomConstant.REGISTRATION, jsonObjects[0]);
+        return httpConnectionUtil.requestPost(HairRecommendationConstants.URL + HairRecommendationConstants.REGISTRATION, jsonObjects[0]);
     }
 
     @Override

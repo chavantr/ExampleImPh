@@ -19,7 +19,7 @@ public class LoginAsync extends AsyncTask<JSONObject, Void, String> {
 
     @Override
     protected String doInBackground(JSONObject... jsonObjects) {
-        return httpConnectionUtil.requestPost(VirtualDressingRoomConstant.URL + VirtualDressingRoomConstant.LOGIN, jsonObjects[0]);
+        return httpConnectionUtil.requestPost(HairRecommendationConstants.URL + HairRecommendationConstants.LOGIN, jsonObjects[0]);
     }
 
     @Override
