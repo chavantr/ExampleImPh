@@ -7,6 +7,8 @@ public class UserInfoHolder {
     private Bitmap image;
     private Bitmap croppedImage;
 
+    private User user;
+
     public static UserInfoHolder getInstance() {
         return UserInfoHolderHelper.INSTANCE;
     }
@@ -25,6 +27,14 @@ public class UserInfoHolder {
 
     public void setCroppedImage(Bitmap croppedImage) {
         this.croppedImage = croppedImage;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public static class UserInfoHolderHelper {

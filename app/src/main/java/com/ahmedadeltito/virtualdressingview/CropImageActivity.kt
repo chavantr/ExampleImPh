@@ -1,9 +1,12 @@
 package com.ahmedadeltito.virtualdressingview
 
+import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+
+
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -11,12 +14,14 @@ import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.ahmedadeltito.virtualdressingview.models.UserInfoHolder
+//import com.google.android.gms.vision.Frame
 import com.isseiaoki.simplecropview.callback.CropCallback
 import com.isseiaoki.simplecropview.callback.SaveCallback
 import kotlinx.android.synthetic.main.activity_crop_image.*
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+//import com.google.android.gms.vision.face.FaceDetector;
 
 
 class CropImageActivity : AppCompatActivity() {
@@ -28,10 +33,32 @@ class CropImageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_crop_image)
         cropImageView.imageBitmap = UserInfoHolder.getInstance().image
 
+
+        //val faceDetector = FaceDetector.Builder(applicationContext).setTrackingEnabled(false)
+        //       .build()
+
+
         btnCrop.setOnClickListener {
             UserInfoHolder.getInstance().croppedImage = cropImageView.croppedBitmap
-            val intent = Intent(this@CropImageActivity, PhotoEditorActivity::class.java)
-            startActivity(intent)
+
+            /*val detector = FaceDetector.Builder(this)
+                    .setProminentFaceOnly(true)
+                    .build()
+
+            if (!detector.isOperational) {
+                AlertDialog.Builder(this).setMessage("Could not set up the face detector!").show()
+                return@setOnClickListener
+            }
+
+            val frame = Frame.Builder().setBitmap(UserInfoHolder.getInstance().croppedImage).build()
+            val faces = detector.detect(frame)
+
+            if (faces.size() == 1) {*/
+                val intent = Intent(this@CropImageActivity, PhotoEditorActivity::class.java)
+                startActivity(intent)
+            /*} else {
+                AlertDialog.Builder(this).setMessage("Input image is not clear").show()
+            }*/
         }
 
     }
