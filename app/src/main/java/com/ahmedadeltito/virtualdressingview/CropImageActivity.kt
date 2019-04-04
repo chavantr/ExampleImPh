@@ -14,6 +14,8 @@ import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.ahmedadeltito.virtualdressingview.models.UserInfoHolder
+import com.google.android.gms.vision.Frame
+import com.google.android.gms.vision.face.FaceDetector
 //import com.google.android.gms.vision.Frame
 import com.isseiaoki.simplecropview.callback.CropCallback
 import com.isseiaoki.simplecropview.callback.SaveCallback
@@ -21,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_crop_image.*
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+
 //import com.google.android.gms.vision.face.FaceDetector;
 
 
@@ -34,14 +37,13 @@ class CropImageActivity : AppCompatActivity() {
         cropImageView.imageBitmap = UserInfoHolder.getInstance().image
 
 
-        //val faceDetector = FaceDetector.Builder(applicationContext).setTrackingEnabled(false)
-        //       .build()
+        val faceDetector = FaceDetector.Builder(applicationContext).setTrackingEnabled(false)
+                .build()
 
 
         btnCrop.setOnClickListener {
             UserInfoHolder.getInstance().croppedImage = cropImageView.croppedBitmap
-
-            /*val detector = FaceDetector.Builder(this)
+            val detector = FaceDetector.Builder(this)
                     .setProminentFaceOnly(true)
                     .build()
 
@@ -53,12 +55,12 @@ class CropImageActivity : AppCompatActivity() {
             val frame = Frame.Builder().setBitmap(UserInfoHolder.getInstance().croppedImage).build()
             val faces = detector.detect(frame)
 
-            if (faces.size() == 1) {*/
+            if (faces.size() == 1) {
                 val intent = Intent(this@CropImageActivity, PhotoEditorActivity::class.java)
                 startActivity(intent)
-            /*} else {
+            } else {
                 AlertDialog.Builder(this).setMessage("Input image is not clear").show()
-            }*/
+            }
         }
 
     }

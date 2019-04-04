@@ -474,6 +474,43 @@
         <!--<item>u+1f3ad</item>-->
         <!--<item>u+1f4cd</item>-->
         <!--<item>u+1f6a9</item>-->
+        <item>@drawable/hair1</item>
+        <item>@drawable/hair2</item>
+        <item>@drawable/hair3</item>
+        <item>@drawable/hair4</item>
+        <item>@drawable/hair5</item>
+        <item>@drawable/hair6</item>
+        <item>@drawable/hair7</item>
+        <item>@drawable/hair8</item>
+        <item>@drawable/hair9</item>
+        <item>@drawable/hair10</item>
+        <item>@drawable/hair11</item>
+        <item>@drawable/hair12</item>
+        <item>@drawable/hair13</item>
+        <item>@drawable/hair14</item>
+        <item>@drawable/hair15</item>
+        <item>@drawable/hair16</item>
+        <item>@drawable/hair17</item>
+        <item>@drawable/hair18</item>
+        <item>@drawable/hair19</item>
+        <item>@drawable/hair20</item>
+        <item>@drawable/hair21</item>
+        <item>@drawable/hair22</item>
+        <item>@drawable/hair23</item>
+        <item>@drawable/hair24</item>
+        <item>@drawable/image_1</item>
+        <item>@drawable/image_2</item>
+        <item>@drawable/image_3</item>
+        <item>@drawable/image_4</item>
+        <item>@drawable/image_5</item>
+        <item>@drawable/image_6</item>
+        <item>@drawable/image_7</item>
+        <item>@drawable/image_8</item>
+        <item>@drawable/image_9</item>
+        <item>@drawable/image_10</item>
+        <item>@drawable/image_11</item>
+        <item>@drawable/image_12</item>
+        <item>@drawable/image_13</item>
     </string-array>
 
 </resources>
